@@ -1,4 +1,5 @@
 import { TrieNode } from './TrieNode';
+import { FuzzyMatch } from './types';
 
 export class Trie {
   private keys: string[];
@@ -23,5 +24,9 @@ export class Trie {
     for (let i = startRange; i <= endRange; i++) {
       yield this.keys[i];
     }
+  }
+
+  *fuzzySearch(word: string, distance: number = 1) {
+    yield { key: 'HEY!', distance: 0 } as FuzzyMatch;
   }
 }
