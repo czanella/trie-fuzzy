@@ -1,4 +1,4 @@
 export interface FuzzyMatch {
-  key: string;
-  distance: number;
+  key: string
+  distance: number
 }

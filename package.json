@@ -49,7 +49,13 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.0.1",
     "@tsconfig/recommended": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
     "dts-cli": "^1.6.0",
+    "eslint": "^8.22.0",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
     "husky": "^8.0.1",
     "size-limit": "^8.0.1",
     "tslib": "^2.4.0",

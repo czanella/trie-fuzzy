@@ -85,7 +85,7 @@ describe('trie', () => {
       }
 
       return 0;
-    }
+    };
 
     it('must find only exact matches when distance is 0', () => {
       const trie = new Trie([

@@ -2,10 +2,10 @@ import { TrieNode } from './TrieNode';
 import { FuzzyMatch } from './types';
 
 export class Trie {
-  private keys: string[];
-  private root: TrieNode;
+  private readonly keys: string[];
+  private readonly root: TrieNode;
 
-  constructor(words: string[]) {
+  constructor (words: string[]) {
     this.keys = [...words].sort();
     this.root = new TrieNode();
 
@@ -14,11 +14,11 @@ export class Trie {
     });
   }
 
-  has(word: string) {
+  has (word: string) {
     return this.root.traverse(word, node => Boolean(node?.match));
   }
 
-  *search(prefix: string) {
+  * search (prefix: string) {
     const [startRange, endRange] = this.root.traverse(prefix, node => node?.wordRange ?? [0, -1]);
 
     for (let i = startRange; i <= endRange; i++) {
@@ -26,7 +26,8 @@ export class Trie {
     }
   }
 
-  *fuzzySearch(word: string, distance: number = 1) {
-    yield { key: 'HEY!', distance: 0 } as FuzzyMatch;
+  * fuzzySearch (word: string, distance: number = 1) {
+    const x: FuzzyMatch = { key: 'HEY!', distance: 0 };
+    yield x;
   }
 }
