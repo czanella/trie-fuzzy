@@ -13,19 +13,15 @@ export class Trie {
     });
   }
 
-  private *keysInRange(range: [number, number] = [0, -1]) {
-    for (let i = range[0]; i <= range[1]; i++) {
-      yield this.keys[i];
-    }
-  }
-
   has(word: string) {
     return this.root.traverse(word, node => Boolean(node?.match));
   }
 
-  search(prefix: string) {
-    const range = this.root.traverse(prefix, node => node?.wordRange);
+  *search(prefix: string) {
+    const [startRange, endRange] = this.root.traverse(prefix, node => node?.wordRange ?? [0, -1]);
 
-    return this.keysInRange(range);
+    for (let i = startRange; i <= endRange; i++) {
+      yield this.keys[i];
+    }
   }
 }
