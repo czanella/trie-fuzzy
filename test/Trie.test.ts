@@ -38,5 +38,37 @@ describe('trie', () => {
 
       expect(trie.has('arma')).toBe(false);
     });
-  })
+  });
+
+  describe('search', () => {
+    it('must return all words that share a prefix', () => {
+      const trie = new Trie([
+        'carro',
+        'arma',
+        'baleia',
+        'armadura',
+        'armadilha',
+        'artesanato',
+        'balela',
+      ]);
+
+      const result = [...trie.search('arma')].sort();
+      expect(result).toEqual(['arma', 'armadilha', 'armadura']);
+    });
+
+    it('must return nothing if no key has the passed prefix', () => {
+      const trie = new Trie([
+        'carro',
+        'arma',
+        'baleia',
+        'armadura',
+        'armadilha',
+        'artesanato',
+        'balela',
+      ]);
+
+      const result = [...trie.search('dados')].sort();
+      expect(result).toEqual([]);
+    });
+  });
 });

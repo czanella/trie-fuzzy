@@ -1,4 +1,4 @@
-import { TrieNode } from './TrieNode'
+import { TrieNode } from './TrieNode';
 
 export class Trie {
   private keys: string[];
@@ -13,7 +13,19 @@ export class Trie {
     });
   }
 
+  private *keysInRange(range: [number, number] = [0, -1]) {
+    for (let i = range[0]; i <= range[1]; i++) {
+      yield this.keys[i];
+    }
+  }
+
   has(word: string) {
-    return this.root.has(word);
+    return this.root.traverse(word, node => Boolean(node?.match));
+  }
+
+  search(prefix: string) {
+    const range = this.root.traverse(prefix, node => node?.wordRange);
+
+    return this.keysInRange(range);
   }
 }
