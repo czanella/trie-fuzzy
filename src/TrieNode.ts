@@ -26,16 +26,20 @@ export class TrieNode {
     this.children[character].insertKey(word, wordIndex, prefix + 1);
   }
 
-  has(word: string, prefix: number = 0): Boolean {
+  traverse<T>(
+    word: string,
+    callback:(trieNode?: TrieNode) => T,
+    prefix: number = 0,
+  ): T {
     if (prefix >= word.length) {
-      return Boolean(this.match);
+      return callback(this);
     }
 
     const character = word[prefix];
     if (!this.children[character]) {
-      return false;
+      return callback();
     }
 
-    return this.children[character].has(word, prefix + 1);
+    return this.children[character].traverse(word, callback, prefix + 1);
   }
 }
