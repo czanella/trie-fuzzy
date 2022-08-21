@@ -28,4 +28,10 @@ export class InfiniteArray<T> {
 
     return this.defaultValue;
   }
+
+  * indexes () {
+    for (let i = this.startRange; i <= this.endRange; i++) {
+      yield i;
+    }
+  }
 }
