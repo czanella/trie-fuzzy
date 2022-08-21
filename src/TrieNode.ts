@@ -1,10 +1,16 @@
+import { InfiniteArray } from './InfiniteArray';
+
 export class TrieNode {
   readonly character: string;
   readonly wordRange: [number, number];
   readonly children: Record<string, TrieNode>;
   match?: true;
 
-  constructor (character: string = '', startRange: number = 0, endRange: number = -1) {
+  constructor (
+    character: string = '',
+    startRange: number = 0,
+    endRange: number = -1,
+  ) {
     this.character = character;
     this.wordRange = [startRange, endRange];
     this.children = {};
@@ -20,7 +26,11 @@ export class TrieNode {
 
     const character = word[prefix];
     if (this.children[character] === undefined) {
-      this.children[character] = new TrieNode(character, wordIndex, wordIndex);
+      this.children[character] = new TrieNode(
+        character,
+        wordIndex,
+        wordIndex,
+      );
     }
 
     this.children[character].insertKey(word, wordIndex, prefix + 1);
@@ -29,7 +39,7 @@ export class TrieNode {
   traverse<T>(
     word: string,
     resultCallback: (trieNode?: TrieNode) => T,
-    prefix: number = 0
+    prefix: number = 0,
   ): T {
     if (prefix >= word.length) {
       return resultCallback(this);
@@ -40,6 +50,19 @@ export class TrieNode {
       return resultCallback();
     }
 
-    return this.children[character].traverse(word, resultCallback, prefix + 1);
+    return this.children[character].traverse(
+      word,
+      resultCallback,
+      prefix + 1,
+    );
+  }
+
+  * fuzzyTraverse (
+    word: string,
+    distance: number,
+    costs?: InfiniteArray<number>,
+    height: number = 0,
+  ) {
+
   }
 }

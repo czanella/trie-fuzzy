@@ -4,7 +4,11 @@ export class InfiniteArray<T> {
   private readonly endRange: number;
   private readonly defaultValue: T;
 
-  constructor (startRange: number, endRange: number, defaultValue: T) {
+  constructor (
+    startRange: number,
+    endRange: number,
+    defaultValue: T,
+  ) {
     this.cache = new Array<T>(endRange - startRange + 1);
     this.startRange = startRange;
     this.endRange = endRange;

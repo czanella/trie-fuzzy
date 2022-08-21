@@ -31,7 +31,7 @@ describe('trie', () => {
       expect(trie.has('foo')).toBe(false);
     });
 
-    it('returns false when looking for a prefix of a key that isn\'t a key itself', () => {
+    it('returns false when looking for a prefix of a key', () => {
       const trie = new Trie([
         'armadura',
         'armadilha',
@@ -113,7 +113,9 @@ describe('trie', () => {
         'BBBB',
       ]);
 
-      const result = [...trie.fuzzySearch('AAAA', 1)].sort(compareFuzzyResult);
+      const result = [...trie.fuzzySearch('AAAA', 1)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result).toEqual([
         { key: 'AAAA', distance: 0 },
@@ -121,7 +123,9 @@ describe('trie', () => {
         { key: 'CAAA', distance: 1 },
       ]);
 
-      const result2 = [...trie.fuzzySearch('AAAA', 1)].sort(compareFuzzyResult);
+      const result2 = [...trie.fuzzySearch('AAAA', 1)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result2).toEqual([
         { key: 'AAAA', distance: 0 },
@@ -145,7 +149,9 @@ describe('trie', () => {
         'Z',
       ]);
 
-      const result = [...trie.fuzzySearch('ABCD', 1)].sort(compareFuzzyResult);
+      const result = [...trie.fuzzySearch('ABCD', 1)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result).toEqual([
         { key: 'ABCD', distance: 0 },
@@ -155,7 +161,9 @@ describe('trie', () => {
         { key: 'BCD', distance: 1 },
       ]);
 
-      const result2 = [...trie.fuzzySearch('ABCD', 2)].sort(compareFuzzyResult);
+      const result2 = [...trie.fuzzySearch('ABCD', 2)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result2).toEqual([
         { key: 'ABCD', distance: 0 },
@@ -183,7 +191,9 @@ describe('trie', () => {
         'ABBBBBBAAA',
       ]);
 
-      const result = [...trie.fuzzySearch('AAAA', 1)].sort(compareFuzzyResult);
+      const result = [...trie.fuzzySearch('AAAA', 1)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result).toEqual([
         { key: 'AAAA', distance: 0 },
@@ -193,7 +203,9 @@ describe('trie', () => {
         { key: 'CAAAA', distance: 1 },
       ]);
 
-      const result2 = [...trie.fuzzySearch('AAAA', 2)].sort(compareFuzzyResult);
+      const result2 = [...trie.fuzzySearch('AAAA', 2)].sort(
+        compareFuzzyResult,
+      );
 
       expect(result2).toEqual([
         { key: 'AAAA', distance: 0 },

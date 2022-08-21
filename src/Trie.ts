@@ -19,7 +19,10 @@ export class Trie {
   }
 
   * search (prefix: string) {
-    const [startRange, endRange] = this.root.traverse(prefix, node => node?.wordRange ?? [0, -1]);
+    const [startRange, endRange] = this.root.traverse(
+      prefix,
+      node => node?.wordRange ?? [0, -1],
+    );
 
     for (let i = startRange; i <= endRange; i++) {
       yield this.keys[i];
