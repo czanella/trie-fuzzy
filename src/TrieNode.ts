@@ -60,9 +60,51 @@ export class TrieNode {
   * fuzzyTraverse (
     word: string,
     distance: number,
-    costs?: InfiniteArray<number>,
+    parentCosts?: InfiniteArray<number>,
     height: number = 0,
-  ) {
+  ): Generator<[number, number]> {
+    // Calculate costs array for this node and minimum cost
+    const costs = new InfiniteArray(
+      Math.max(0, height - distance),
+      Math.min(word.length, height + distance),
+      Infinity,
+    );
+    let minCost = Infinity;
 
+    for (const index of costs.indexes()) {
+      let cost: number;
+      if (parentCosts == null) {
+        cost = index;
+      } else {
+        const character = word[index - 1] ?? '';
+        const replacementCost = this.character === character ? 0 : 1;
+        cost = Math.min(
+          costs.get(index - 1) + 1,
+          parentCosts.get(index) + 1,
+          parentCosts.get(index - 1) + replacementCost,
+        );
+      }
+      costs.set(index, cost);
+      minCost = Math.min(minCost, cost);
+    }
+
+    // If it's a match, yields it
+    if (this.match && costs.get(word.length) <= distance) {
+      yield [this.wordRange[0], costs.get(word.length)];
+    }
+
+    // Checks minmum cost to see if it can continue traversing
+    if (minCost <= distance) {
+      for (const childNode of Object.values(this.children)) {
+        for (const result of childNode.fuzzyTraverse(
+          word,
+          distance,
+          costs,
+          height + 1,
+        )) {
+          yield result;
+        }
+      }
+    }
   }
 }

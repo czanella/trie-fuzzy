@@ -123,7 +123,7 @@ describe('trie', () => {
         { key: 'CAAA', distance: 1 },
       ]);
 
-      const result2 = [...trie.fuzzySearch('AAAA', 1)].sort(
+      const result2 = [...trie.fuzzySearch('AAAA', 2)].sort(
         compareFuzzyResult,
       );
 
