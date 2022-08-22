@@ -33,17 +33,20 @@ export class Trie {
     }
   }
 
-  *fuzzySearch(word: string, maxDistance: number = 1): Generator<FuzzyMatch> {
+  *fuzzySearch(word: string, maxDistance: number = 1) {
     const intDistance = Math.floor(maxDistance);
+
     if (intDistance < 0) {
       throw new Error('maxDistance must be positive or zero');
     }
+
     for (
       const [keyIndex, distance]
       of
       this.root.fuzzyTraverse(word, intDistance)
     ) {
-      yield { key: this.keys[keyIndex], distance };
+      const result: FuzzyMatch = { key: this.keys[keyIndex], distance };
+      yield result;
     }
   }
 }
