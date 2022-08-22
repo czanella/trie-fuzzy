@@ -102,7 +102,7 @@ Searches for all words in the Trie's set that are similar to a given word. Uses 
 
 `maxDistance`: the threshold that defines the maximal edit distance between `word` and the returned results.
 
-_Returns:_ A Generator that iterates through all words in the Trie's set where the edit distance to `word` is lower than or equal to `maxDistance`.
+_Returns:_ A Generator that iterates through all words in the Trie's set where the edit distance to `word` is lower than or equal to `maxDistance`. Each result is an object containing two keys: `key` holds the word from the Trie set that was matched, and `distance` holds the edit distance between the result and `word`.
 ***
 
 ## Implementation Details
