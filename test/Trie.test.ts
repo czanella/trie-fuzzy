@@ -227,5 +227,23 @@ describe('trie', () => {
 
       expect(result).toEqual([{ key: 'ARTES', distance: 3 }]);
     });
+
+    it('throws error when maxDistance is negative', () => {
+      const trie = new Trie([
+        'AAAA',
+        'BAAAA',
+        'CAAAA',
+        'AACAA',
+        'AAAAB',
+        'BAAAAF',
+        'CAAFAA',
+        'AACEAA',
+        'AAEAAB',
+        'ABBBAAA',
+        'ABBBBBBAAA',
+      ]);
+
+      expect(() => [...trie.fuzzySearch('AAA', -1)]).toThrow();
+    });
   });
 });
