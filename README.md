@@ -131,6 +131,10 @@ trie.has('timer'); // false
 trie.has(cleanKey('timer')); // true
 trie.has(cleanKey('TiMeR')); // true
 ```
-
 ***
+## Author
+
+* [Carlos Zanella](https://github.com/czanella)
+***
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
