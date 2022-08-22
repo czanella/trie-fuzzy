@@ -57,7 +57,7 @@ export class TrieNode {
     );
   }
 
-  * fuzzyTraverse(
+  *fuzzyTraverse(
     word: string,
     distance: number,
     parentCosts?: InfiniteArray<number>,

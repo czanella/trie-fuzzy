@@ -14,9 +14,11 @@
     },
     "plugins": ["jest"],
     "rules": {
+      "prettier/prettier": 0,
       "jest/no-focused-tests": 2,
       "max-len": ["error", { "code": 80 }],
       "comma-dangle": ["error", "always-multiline"],
+      "generator-star-spacing": ["error", "before"],
       "@typescript-eslint/semi": ["error", "always"],
       "@typescript-eslint/space-before-function-paren": ["error", "never"],
       "@typescript-eslint/explicit-function-return-type": "off",
