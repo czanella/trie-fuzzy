@@ -1,14 +1,16 @@
 # trie-fuzzy
 
-A TS implementation of the [Trie](https://en.wikipedia.org/wiki/Trie) data structure, including fuzzy (approximate) string match.
+A TS implementation of the [Trie](https://en.wikipedia.org/wiki/Trie) data structure, including fuzzy (approximate) string matching.
+
+Powered by [DTS](https://weiran-zsd.github.io/dts-cli/).
 
 ## Features
 
-* Exact string match
+* Exact string search
 * Prefix search
 * Fuzzy search
-* Generator interfaces
-* Runs both in NodeJS and in browsers
+* Generator interfaces - no need to store all results in memory all at once
+* Runs in both NodeJS and in browsers
 * No dependencies
 
 ## Usage
