@@ -4,7 +4,7 @@ export class InfiniteArray<T> {
   private readonly endRange: number;
   private readonly defaultValue: T;
 
-  constructor (
+  constructor(
     startRange: number,
     endRange: number,
     defaultValue: T,
@@ -15,13 +15,13 @@ export class InfiniteArray<T> {
     this.defaultValue = defaultValue;
   }
 
-  set (index: number, value: T) {
+  set(index: number, value: T) {
     if (index >= this.startRange && index <= this.endRange) {
       this.cache[index - this.startRange] = value;
     }
   }
 
-  get (index: number) {
+  get(index: number) {
     if (index >= this.startRange && index <= this.endRange) {
       return this.cache[index - this.startRange];
     }
@@ -29,7 +29,7 @@ export class InfiniteArray<T> {
     return this.defaultValue;
   }
 
-  * indexes () {
+  * indexes() {
     for (let i = this.startRange; i <= this.endRange; i++) {
       yield i;
     }

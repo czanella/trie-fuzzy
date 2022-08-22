@@ -6,7 +6,7 @@ export class TrieNode {
   readonly children: Record<string, TrieNode>;
   match?: true;
 
-  constructor (
+  constructor(
     character: string = '',
     startRange: number = 0,
     endRange: number = -1,
@@ -16,7 +16,7 @@ export class TrieNode {
     this.children = {};
   }
 
-  insertKey (word: string, wordIndex: number, prefix: number = 0) {
+  insertKey(word: string, wordIndex: number, prefix: number = 0) {
     this.wordRange[1] = wordIndex;
 
     if (prefix >= word.length) {
@@ -57,7 +57,7 @@ export class TrieNode {
     );
   }
 
-  * fuzzyTraverse (
+  * fuzzyTraverse(
     word: string,
     distance: number,
     parentCosts?: InfiniteArray<number>,
