@@ -12,7 +12,9 @@
         "sourceType": "module",
         "project": ["./tsconfig.json"]
     },
+    "plugins": ["jest"],
     "rules": {
+      "jest/no-focused-tests": 2,
       "max-len": ["error", { "code": 80 }],
       "comma-dangle": ["error", "always-multiline"],
       "@typescript-eslint/semi": ["error", "always"],
