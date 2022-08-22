@@ -1,5 +1,4 @@
-import { Trie } from '../src/Trie';
-import { FuzzyMatch } from '../src/types';
+import { FuzzyMatch, Trie } from '../src/Trie';
 
 describe('trie', () => {
   describe('has', () => {

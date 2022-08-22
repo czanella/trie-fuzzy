@@ -1,5 +1,9 @@
 import { TrieNode } from './TrieNode';
-import { FuzzyMatch } from './types';
+
+export interface FuzzyMatch {
+  key: string;
+  distance: number;
+}
 
 export class Trie {
   private readonly keys: string[];
