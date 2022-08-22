@@ -1,6 +1,6 @@
 {
   "name": "trie-fuzzy",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Carlos Zanella",
   "main": "dist/index.js",
