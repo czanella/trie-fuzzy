@@ -96,7 +96,7 @@ _Returns:_ A Generator that iterates through all words in the Trie's set that st
 ```typescript
 *fuzzySearch(word: string, maxDistance: number = 1) => Generator<{ key: string, distance: number }>
 ```
-Searches for all words in the Trie's set that are similar to a given word. Uses the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) (or edit distance) to measure similarity.
+Searches for all words in the Trie's set that are similar to a given word. Uses the [Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau-Levenshtein_distance) (or edit distance with character transposition) to measure similarity.
 
 `word`: the word to be queried.
 

@@ -219,6 +219,21 @@ describe('trie', () => {
       ]);
     });
 
+    it('must find matches based on transposition', () => {
+      const trie = new Trie([
+        'ABCA',
+        'ADCA',
+      ]);
+
+      const result = [...trie.fuzzySearch('ACBA', 1)].sort(
+        compareFuzzyResult,
+      );
+
+      expect(result).toEqual([
+        { key: 'ABCA', distance: 1 },
+      ]);
+    });
+
     it('must find matches based on combined edit types', () => {
       const trie = new Trie(['ARTES', 'FOOBAR']);
 

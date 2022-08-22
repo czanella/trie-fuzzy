@@ -61,6 +61,8 @@ export class TrieNode {
     word: string,
     distance: number,
     parentCosts?: InfiniteArray<number>,
+    grandparentCosts?: InfiniteArray<number>,
+    parentNode?: TrieNode,
     height: number = 0,
   ): Generator<[number, number]> {
     // Calculate costs array for this node and minimum cost
@@ -73,16 +75,22 @@ export class TrieNode {
 
     for (const index of costs.indexes()) {
       let cost: number;
-      if (parentCosts == null) {
+      if (parentCosts === undefined) {
         cost = index;
       } else {
-        const character = word[index - 1] ?? '';
-        const replacementCost = this.character === character ? 0 : 1;
-        cost = Math.min(
+        const replacementCost = this.character === word[index - 1] ? 0 : 1;
+        const costCandidates = [
           costs.get(index - 1) + 1,
           parentCosts.get(index) + 1,
           parentCosts.get(index - 1) + replacementCost,
-        );
+        ];
+        if (
+          grandparentCosts !== undefined &&
+          this.character === word[index - 2] &&
+          parentNode?.character === word[index - 1]) {
+          costCandidates.push(grandparentCosts.get(index - 2) + 1);
+        }
+        cost = Math.min(...costCandidates);
       }
       costs.set(index, cost);
       minCost = Math.min(minCost, cost);
@@ -100,6 +108,8 @@ export class TrieNode {
           word,
           distance,
           costs,
+          parentCosts,
+          this,
           height + 1,
         )) {
           yield result;
