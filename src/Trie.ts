@@ -22,7 +22,7 @@ export class Trie {
     return this.root.traverse(word, node => Boolean(node?.match));
   }
 
-  *search(prefix: string) {
+  *prefixSearch(prefix: string) {
     const [startRange, endRange] = this.root.traverse(
       prefix,
       node => node?.wordRange ?? [0, -1],

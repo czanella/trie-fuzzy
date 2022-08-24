@@ -35,7 +35,7 @@ const trie = new Trie([
 trie.has('armor'); // true
 trie.has('arm'); // false
 
-for (const result of trie.search('arm')) {
+for (const result of trie.prefixSearch('arm')) {
   console.log(result);
 }
 /*
@@ -81,9 +81,9 @@ Verifies if a given word is contained in the Trie's word set.
 _Returns:_ `true` if `word` exists in the Trie, `false` otherwise.
 ***
 
-### _search_ - prefix search
+### _prefixSearch_ - prefix search
 ```typescript
-*search(prefix: string) => Generator<string>
+*prefixSearch(prefix: string) => Generator<string>
 ```
 Searches for all words in the Trie's set with a given prefix.
 
@@ -109,7 +109,7 @@ _Returns:_ A Generator that iterates through all words in the Trie's set where t
 
 * `Trie` is an immutable class - after a trie is built, no other words can be added to it nor removed from it. It was designed like this to speed up prefix search and also to leverage the benefits of [immutability](https://en.wikipedia.org/wiki/Immutable_object).
 
-* Every query operation in `Trie` is case sensitive - meaning that a `Trie` that contains the word `KERFUFFLE` will __not__ return it if the user searches for `kerfuffle` (either through `has`, `search` or `fuzzySearch`). It was designed like this for the sake of simplicity and to avoid the many edge cases that might arise - it's up to the user to clean up the keys before building a Trie and querying it. The code below is an example of how to perform case-insensitive queries in a Trie:
+* Every query operation in `Trie` is case sensitive - meaning that a `Trie` that contains the word `KERFUFFLE` will __not__ return it if the user searches for `kerfuffle` (either through `has`, `prefixSearch` or `fuzzySearch`). It was designed like this for the sake of simplicity and to avoid the many edge cases that might arise - it's up to the user to clean up the keys before building a Trie and querying it. The code below is an example of how to perform case-insensitive queries in a Trie:
 ```typescript
 import { Trie } from 'trie-fuzzy';
 

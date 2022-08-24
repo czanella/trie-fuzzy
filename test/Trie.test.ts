@@ -52,7 +52,7 @@ describe('trie', () => {
         'balela',
       ]);
 
-      const result = [...trie.search('arma')].sort();
+      const result = [...trie.prefixSearch('arma')].sort();
       expect(result).toEqual(['arma', 'armadilha', 'armadura']);
     });
 
@@ -67,7 +67,7 @@ describe('trie', () => {
         'balela',
       ]);
 
-      const result = [...trie.search('dados')].sort();
+      const result = [...trie.prefixSearch('dados')].sort();
       expect(result).toEqual([]);
     });
   });
